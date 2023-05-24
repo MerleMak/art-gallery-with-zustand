@@ -42,14 +42,10 @@ export default function ArtPieceDetailsPage({
       artist={selectedArtPiece.artist}
       year={selectedArtPiece.year}
       genre={selectedArtPiece.genre}
-      isFavorite={
-        artPiecesInfo.find((piece) => piece.slug === selectedArtPiece.slug)
-          ?.isFavorite
-      }
-      onToggleFavorite={() => onToggleFavorite(selectedArtPiece.slug)}
       colors={selectedArtPiece.colors}
       comments={selectedArtPieceComments}
       addComment={(newComment) => addComment(selectedArtPiece.slug, newComment)}
+      slug={selectedArtPiece.slug}
     />
   );
 }

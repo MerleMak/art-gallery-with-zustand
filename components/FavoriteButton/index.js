@@ -1,5 +1,25 @@
 import Image from "next/image.js";
 import styled from "styled-components";
+import useStore from "@/lib/useStore";
+
+export default function FavoriteButton({ slug, positionAbsolute = false }) {
+  const toggleFavorites = useStore((state) => state.toggleFavorites);
+  const isFavorite = useStore(
+    (state) =>
+      state.artPiecesInfo.find((artPiece) => artPiece.slug === slug)?.isFavorite
+  );
+  return (
+    <Button
+      type="button"
+      onClick={() => toggleFavorites(slug)}
+      isFavorite={isFavorite}
+      aria-label={isFavorite ? "unlike" : "like"}
+      positionAbsolute={positionAbsolute}
+    >
+      <Image src="/assets/heart.svg" width={40} height={40} alt="" />
+    </Button>
+  );
+}
 
 const Button = styled.button`
   position: ${({ positionAbsolute }) =>
@@ -16,21 +36,3 @@ const Button = styled.button`
   height: 50px;
   padding: 0.2rem 0 0;
 `;
-
-export default function FavoriteButton({
-  isFavorite,
-  onToggleFavorite,
-  positionAbsolute = false,
-}) {
-  return (
-    <Button
-      type="button"
-      onClick={onToggleFavorite}
-      isFavorite={isFavorite}
-      aria-label={isFavorite ? "unlike" : "like"}
-      positionAbsolute={positionAbsolute}
-    >
-      <Image src="/assets/heart.svg" width={40} height={40} alt="" />
-    </Button>
-  );
-}

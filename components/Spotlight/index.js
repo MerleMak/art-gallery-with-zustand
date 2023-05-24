@@ -14,20 +14,11 @@ const Wrapper = styled.div`
   place-items: center;
 `;
 
-export default function Spotlight({
-  image,
-  artist,
-  onToggleFavorite,
-  isFavorite,
-}) {
+export default function Spotlight({ image, artist, slug }) {
   return (
     <Wrapper>
       <ImageContainer>
-        <FavoriteButton
-          isFavorite={isFavorite}
-          onToggleFavorite={onToggleFavorite}
-          positionAbsolute={true}
-        />
+        <FavoriteButton slug={slug} positionAbsolute={true} />
         <StyledImage
           src={image}
           fill
