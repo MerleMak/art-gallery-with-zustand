@@ -21,24 +21,7 @@ export default function App({ Component, pageProps }) {
 
   const toggleFavorites = useStore((state) => state.toggleFavorites);
 
-  function addComment(slug, newComment) {
-    setArtPiecesInfo((prev) => {
-      const artPiece = prev.find((piece) => piece.slug === slug);
-      if (artPiece) {
-        return prev.map((pieceInfo) => {
-          if (pieceInfo.slug === slug) {
-            return pieceInfo.comments
-              ? { ...pieceInfo, comments: [...pieceInfo.comments, newComment] }
-              : { ...pieceInfo, comments: [newComment] };
-          } else {
-            return pieceInfo;
-          }
-        });
-      } else {
-        return [...prev, { slug, isFavorite: false, comments: [newComment] }];
-      }
-    });
-  }
+  const addComment = useStore((state) => state.addComment);
 
   return (
     <Layout>
