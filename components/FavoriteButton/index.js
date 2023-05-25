@@ -15,6 +15,7 @@ export default function FavoriteButton({ slug, positionAbsolute = false }) {
       isFavorite={isFavorite}
       aria-label={isFavorite ? "unlike" : "like"}
       positionAbsolute={positionAbsolute}
+      data-cy="fav"
     >
       <Image src="/assets/heart.svg" width={40} height={40} alt="" />
     </Button>
