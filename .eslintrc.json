@@ -1,15 +1,28 @@
 {
   "env": {
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
-  "extends": ["next/core-web-vitals", "plugin:jest/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:jest/recommended",
+    "plugin:cypress/recommended"
+  ],
   "rules": {
     "import/no-anonymous-default-export": [
       "error",
       {
         "allowObject": true
       }
-    ]
+    ],
+    "cypress/no-assigning-return-values": "error",
+    "cypress/no-unnecessary-waiting": "error",
+    "cypress/assertion-before-screenshot": "warn",
+    "cypress/no-force": "warn",
+    "cypress/no-async-tests": "error",
+    "cypress/no-pause": "error",
+    "jest/expect-expect": "off",
+    "jest/valid-expect": "off"
   },
-  "plugins": ["jest"]
+  "plugins": ["jest", "cypress"]
 }
